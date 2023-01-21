@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "173bc448-2974-4098-b8b1-92a03e48fc40",
+		"name": "Kimsa Test Front",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10719270"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let token = pm.response.json().token;",
+									"pm.variables.set(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "373"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jan 2023 23:34:02 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"175-oUEZnP+yIZw652+tX56Glsf2KbM\""
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"createdAt\": \"2023-01-11T22:49:43.381Z\",\n        \"_id\": \"637068bdac58b23e913b03f1\",\n        \"username\": \"admin\",\n        \"email\": \"gerencia@kimsasoft.com\",\n        \"name\": \"Cristian\",\n        \"lastname\": \"Cazares\",\n        \"status\": \"A\",\n        \"role\": \"admin\",\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjc0MDg0ODQyLCJleHAiOjE2NzQ2ODk2NDJ9.8KI4pxLs2fGTjYNxcHzGHdO4t756azpH2gmfL-3X6m0\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Config Bot",
+			"item": [
+				{
+					"name": "Create Config Bot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bot\",\n    \"type\": \"whatsapp\",\n    \"status\": \"A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/config-bot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"config-bot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Config Bot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/config-bot",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"config-bot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id Config Bot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/config-bot/6370694aac58b23e913b03f9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"config-bot",
+								"6370694aac58b23e913b03f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Config Bot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bot00\",\n    \"type\": \"whatsapp7\",\n    \"status\": \"A\",\n    \"active\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/config-bot/6370694aac58b23e913b03f9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"config-bot",
+								"6370694aac58b23e913b03f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by Id Config Bot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/config-bot/6370694aac58b23e913b03f9",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"config-bot",
+								"6370694aac58b23e913b03f9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "back.test.kimsasoft.com",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjc0MDg0NzE3LCJleHAiOjE2NzQ2ODk1MTd9.ztW91ad7ylBV8VAEChyNtFMDr3_Nlgweuzeke94P3Kg",
+			"type": "string"
+		}
+	]
+}

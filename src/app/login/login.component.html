@@ -1,0 +1,29 @@
+<div class="login">
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+  <form class="custom-form" method="post">
+    <h1>BIENVENIDO</h1>
+
+    <label for="username">USUARIO</label>
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="username"
+      placeholder="Inserte su usuario"
+      required="required"
+    />
+
+    <label for="password">CONTRASEÑA</label>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Inserte su contraseña"
+      required="required"
+    />
+    <button type="submit" (click)="login()">Log in</button>
+  </form>
+</div>
+
